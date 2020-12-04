@@ -5,8 +5,6 @@ import Misc from '../../types/Misc';
 
 const styles = StyleSheet.create({
     container: {
-        position: "absolute",
-        bottom: -30,
         backgroundColor: "#313131",
         height: 30,
         width: 30,
@@ -37,13 +35,13 @@ interface Props {
 export default function PointInfo(props: Props) {
 
     const colors = React.useMemo(() => {
-        if (props.type === 'absent') {
+        if (props.type === 'valide') {
             return ['#FD0000', '#FCA7A7'];
         }
         if (props.type === 'present') {
             return ['#FD5B00', '#FCC5A7'];
         }
-        return ['#05FD00', '#A7FCAF'];
+        return ['#000', '#181a18'];
     }, [])
 
     return (

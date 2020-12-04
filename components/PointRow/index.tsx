@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#1A1A1A",
         flexDirection: "row",
         paddingVertical: 15,
-        paddingHorizontal: 30,
+        paddingRight: 10,
         marginVertical: 10,
         marginHorizontal: 10,
         borderRadius: 100,
@@ -21,6 +21,12 @@ const styles = StyleSheet.create({
         display: "flex",
         alignItems: "center",
         justifyContent: 'center'
+    },
+    feedbacks: {
+        display: "flex",
+        flexDirection: "row",
+        flexWrap: "wrap",
+        width: 60
     }
 });
 
@@ -37,9 +43,15 @@ export default function PointRow({ seq, feedbacks }: Props) {
             { seq.map((colorID, index) =>
                 <View style={styles.pointContainer} key={index}>
                     <Point color={COLORS[colorID]} />
-                    <PointInfo type={feedbacks[index]} />
                 </View>
             )}
+            <View style={styles.feedbacks}>
+                { feedbacks.sort().map((f, i) => (
+                    <View key={i}>
+                        <PointInfo type={f} />
+                    </View>
+                )) }
+            </View>
         </View>
     )
 }
